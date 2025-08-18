@@ -70,7 +70,7 @@ local function rejoin()
     end
 
     if bestServer then
-        queueonteleport()
+        queueonteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/who-else123/Rayfield/refs/heads/main/battlegrounds.lua'))()")
         teleportService:TeleportToPlaceInstance(game.PlaceId, bestServer, localPlayer)
     else
         task.wait(10)
