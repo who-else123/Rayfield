@@ -39,15 +39,15 @@ local function collect(object)
     local oldCFrame = rootPart.CFrame
 
     pcall(function()
-    while object.Parent do
-        if not object then continue end
-        rootPart.CFrame = object.CFrame
-
-        task.wait()
-        firetouchinterest(usercharacter.HumanoidRootPart, object, 1)
-        task.wait()
-        firetouchinterest(usercharacter.HumanoidRootPart, object, 0)
-        task.wait()
+    	while object.Parent do
+	        if not object then continue end
+	        rootPart.CFrame = object.CFrame
+	
+	        task.wait()
+	        firetouchinterest(usercharacter.HumanoidRootPart, object, 1)
+	        task.wait()
+	        firetouchinterest(usercharacter.HumanoidRootPart, object, 0)
+	        task.wait()
         end
     end)
     usercharacter.HumanoidRootPart.CFrame = oldCFrame
