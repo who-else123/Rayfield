@@ -18,10 +18,10 @@ local httpService = getService("HttpService")
 local textChatService = getService("TextChatService")
 local tweenService = getService("TweenService")
 
-local localPlayer = players.LocalPlayer
-local usercharacter = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+local userplayer = players.LocalPlayer
+local usercharacter = userplayer.Character or userplayer.CharacterAdded:Wait()
 
-localPlayer.CharacterAdded:Connect(function(char)
+userplayer.CharacterAdded:Connect(function(char)
     usercharacter = char
 end)
 
@@ -71,7 +71,7 @@ local function rejoin()
 
     if bestServer then
         queueonteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/who-else123/Rayfield/refs/heads/main/battlegrounds.lua'))()")
-        teleportService:TeleportToPlaceInstance(game.PlaceId, bestServer, localPlayer)
+        teleportService:TeleportToPlaceInstance(game.PlaceId, bestServer, userplayer)
     else
         task.wait(10)
         return rejoin()
@@ -109,10 +109,3 @@ for _, child in pairs(serverFX:GetChildren()) do
     onChildAdded(child)
 end
 getgenv().thread = serverFX.ChildAdded:Connect(onChildAdded)
-
-while task.wait(1) do
-    local playing = #players:GetPlayers()
-    if playing <= 6 then
-        rejoin()
-    end
-end
