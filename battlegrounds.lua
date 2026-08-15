@@ -38,17 +38,18 @@ local function collect(object)
     local rootPart = usercharacter.HumanoidRootPart
     local oldCFrame = rootPart.CFrame
 
-    for _ = 1, 3, 1 do
+    pcall(function()
+    while object.Parent do
         if not object then continue end
         rootPart.CFrame = object.CFrame
 
-        task.wait(0.1)
+        task.wait()
         firetouchinterest(usercharacter.HumanoidRootPart, object, 1)
         task.wait()
         firetouchinterest(usercharacter.HumanoidRootPart, object, 0)
-        task.wait(0.1)
-    end
-
+        task.wait()
+        end
+    end)
     usercharacter.HumanoidRootPart.CFrame = oldCFrame
     collecting = false
 end
